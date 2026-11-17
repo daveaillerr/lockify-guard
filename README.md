@@ -6,7 +6,7 @@
   <img src="assets/icon-128.png" width="32" height="32" align="absmiddle" alt="Lockify Guard Icon" />
 </h1>
 
-![alt text](image.png)
+![alt text](assets/image.png)
 
 **Extension-first deep work and certification tracking platform**
 
