@@ -1,6 +1,12 @@
 <div align="center">
 
-# Lockify Guard
+<h1>
+  <img src="assets/icon-128.png" width="32" height="32" align="absmiddle" alt="Lockify Guard Icon" />
+  &nbsp;Lockify Guard&nbsp;
+  <img src="assets/icon-128.png" width="32" height="32" align="absmiddle" alt="Lockify Guard Icon" />
+</h1>
+
+![alt text](image.png)
 
 **Extension-first deep work and certification tracking platform**
 
@@ -18,11 +24,11 @@ A privacy-first browser extension and companion web cockpit that captures object
 
 > Lockify Guard is a browser-extension-first deep work and certification tracking platform that collects objective productivity telemetry automatically and presents deterministic focus analytics through a companion web cockpit.
 
-## Overview
+## <img src="assets/icon-128.png" width="24" height="24" align="absmiddle" alt="" /> Overview
 
 Lockify Guard replaces manual study logging with automatically collected focus telemetry, deterministic scoring, and web-based analytics. The browser extension acts as the primary telemetry collector and enforcement engine, the FastAPI backend computes deterministic scores and trend velocity at the production backend (`https://lockify-guard.vercel.app`), and the Astro web cockpit renders the resulting analytics.
 
-## Core Features
+## <img src="assets/icon-128.png" width="24" height="24" align="absmiddle" alt="" /> Core Features
 
 Lockify Guard is deliberately scoped to six core feature areas.
 
@@ -35,13 +41,13 @@ Lockify Guard is deliberately scoped to six core feature areas.
 | Focus Analytics | Net focus minutes, flow stability index, streak health, and velocity trajectory visualization. |
 | Certification Tracking | Automatic telemetry association with certification roadmaps and user-confirmed milestones. |
 
-## How It Works
+## <img src="assets/icon-128.png" width="24" height="24" align="absmiddle" alt="" /> How It Works
 
 1. The Chrome MV3 extension service worker and content script collect objective telemetry: tab switches, window blurs, fullscreen exits, idle drift, pauses, and blocked-site hits.
 2. The FastAPI backend computes deterministic focus scores and trend velocity.
 3. The web cockpit renders analytics from local-first storage, with a client-side scoring fallback when the backend is unavailable.
 
-## Tech Stack
+## <img src="assets/icon-128.png" width="24" height="24" align="absmiddle" alt="" /> Tech Stack
 
 | Layer | Technology |
 |-------|------------|
@@ -50,53 +56,27 @@ Lockify Guard is deliberately scoped to six core feature areas.
 | Backend | FastAPI + Uvicorn + Pydantic |
 | Deployment | Vercel (backend serverless function, web deployment) |
 
-## Getting Started
+## <img src="assets/icon-128.png" width="24" height="24" align="absmiddle" alt="" /> Getting Started
 
-1. Install [Google Chrome](https://www.google.com/chrome/), [Node.js](https://nodejs.org/) `>= 22.23.4`, and [Python](https://www.python.org/) `>= 3.11`.
-2. Clone this repository.
-   ```bash
-   git clone https://github.com/daveaillerr/lockify.git
-   cd lockify
-   ```
-3. Start the web cockpit.
-   ```bash
-   cd web
-   npm install
-   npm run dev
-   ```
-4. Start the backend telemetry engine.
-   ```bash
-   cd backend
-   python3 -m venv venv
-   source venv/bin/activate
-   pip install -r requirements.txt
-   uvicorn main:app --reload --host 127.0.0.1 --port 8000
-   ```
-5. Load the browser extension.
-   - Open `chrome://extensions` and enable **Developer mode**.
-   - Click **Load unpacked** and select the `extension/` folder.
-   - Pin **Lockify Guard** to the toolbar.
+### Installation & Setup
 
-6. Verify the installation by opening the web dashboard.
+1. **Download Extension ZIP** (`v2.0.0 · Manifest V3`)
+   - Download the official **Lockify Focus Guard** extension archive and extract it anywhere on your computer: [**Download Extension (ZIP)**](#) *(replace `#` with your release/ZIP link)*
+2. **Open Extensions Page**
+   - Open your browser and navigate to `chrome://extensions`
+3. **Enable Developer Mode**
+   - Toggle the switch labeled **Developer mode** in the top-right corner of the extensions manager.
+4. **Load Unpacked Folder**
+   - Click **Load unpacked** and select the unzipped extension folder on your device. Pin **Lockify** to your browser toolbar to start focusing immediately.
 
-## API Endpoints
-
-| Endpoint | Purpose |
-|----------|---------|
-| `GET /health` | Service availability and privacy posture. |
-| `POST /api/telemetry/score` | Deterministic focus score computation. |
-| `POST /api/telemetry/trends` | Consistency and velocity projections. |
-| `GET /api/extension/sync` | Pseudonymous blocker state retrieval. |
-| `POST /api/extension/sync` | Pseudonymous blocker state update. |
-
-## Privacy
+## <img src="assets/icon-128.png" width="24" height="24" align="absmiddle" alt="" /> Privacy
 
 Lockify Guard implements privacy by design with a zero Personally Identifiable Information posture, pseudonymous device identity, and local-first data persistence.
 
 - The extension reads only hostnames to detect course sites; it never reads or stores full URLs, page titles, content, or queries.
 - Telemetry is stored locally (browser storage / IndexedDB) and transmitted pseudonymous outbox records only.
 
-## Troubleshooting
+## <img src="assets/icon-128.png" width="24" height="24" align="absmiddle" alt="" /> Troubleshooting
 
 ### `Uncaught Error: Extension context invalidated`
 
@@ -120,7 +100,7 @@ If completed study session records do not appear in the web dashboard:
 3. Ensure the web application origin is permitted in backend CORS configuration (`ALLOWED_ORIGINS`).
 4. Ensure the web client's backend base URL defaults to the deployed HTTPS backend rather than a local loopback IP to avoid mixed-content blocking.
 
-## Learnings
+## <img src="assets/icon-128.png" width="24" height="24" align="absmiddle" alt="" /> Learnings
 
 - **Strict Content Script Role Separation:** In content scripts serving dual purposes (acting as a communication bridge on your app vs. displaying study overlays on external learning platforms), keep origin checks strictly partitioned so learning platforms are never misidentified as the dashboard application.
 - **Cross-Component Origin Consistency:** Browser extensions enforcing origin boundaries require exact domain matching across `manifest.json`, background service worker sender validations, and backend CORS policies.
@@ -128,6 +108,6 @@ If completed study session records do not appear in the web dashboard:
 - **Production Fallback Defaults:** Client-side network helpers should default to production HTTPS endpoints to maintain zero-config functionality when environment variables are omitted during deployment.
 - **Timer Integrity Under Service Worker Suspension:** MV3 background workers suspend when idle. Compute remaining countdown times strictly from absolute timestamps (`phaseEndsAt - Date.now()`) rather than interval-based loops.
 
-## License
+## <img src="assets/icon-128.png" width="24" height="24" align="absmiddle" alt="" /> License
 
 This project does not currently include an open-source license file. All rights are reserved by the repository owner unless a license is added in the future.
